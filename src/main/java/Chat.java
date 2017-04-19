@@ -1,10 +1,11 @@
-import org.json.JSONObject;
-import spark.Session;
-
-import java.text.SimpleDateFormat;
-import java.util.Map;
+import org.eclipse.jetty.websocket.api.*;
+import org.json.*;
+import java.text.*;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static j2html.TagCreator.*;
+import static spark.Spark.*;
 /**
  * Created by michaelberber on 4/11/17.
  */
@@ -25,7 +26,7 @@ public class Chat {
                         .put("userMessage", createHtmlMessageFromSender(sender, message))
                         .put("userlist", userUsenameMap.values())
                 ));
-            } catch Exception e {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
